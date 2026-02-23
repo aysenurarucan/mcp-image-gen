@@ -6,7 +6,7 @@ import { CreatePromptInput } from '../schemas/prompts.js';
 
 dotenv.config();
 
-const PB_URL = process.env.PB_URL || 'https://pocketbase-db-sc4q.onrender.com';
+const PB_URL = process.env.PB_URL || 'https://pocketbase-8vgg.onrender.com';
 const PB_ADMIN_EMAIL = process.env.PB_ADMIN_EMAIL || 'arucanaysenur4@gmail.com';
 const PB_ADMIN_PASSWORD = process.env.PB_ADMIN_PASSWORD || 'H8F3a2m7$$';
 
