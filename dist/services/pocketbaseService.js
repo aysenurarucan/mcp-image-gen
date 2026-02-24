@@ -9,7 +9,7 @@ export class PocketBaseService {
     pb;
     authenticated = false;
     constructor() {
-        this.pb = new PocketBase(PB_URL);
+        this.pb = new PocketBase("https://pocketbase-server-k8ac.onrender.com");
         this.pb.autoCancellation(false);
     }
     async authenticate() {

@@ -17,7 +17,7 @@ export class PocketBaseService {
     private authenticated: boolean = false;
 
     constructor() {
-        this.pb = new PocketBase(PB_URL);
+        this.pb = new PocketBase("https://pocketbase-server-k8ac.onrender.com");
         this.pb.autoCancellation(false);
     }
 
