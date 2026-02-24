@@ -22,8 +22,10 @@ export class PocketBaseService {
     }
 
     async authenticate() {
+        logger.info("PB AUTH PATH CHECK: using admins.authWithPassword");
         if (this.authenticated) return;
         try {
+            logger.info("PB AUTH CALL: admins");
             await this.pb.admins.authWithPassword(PB_ADMIN_EMAIL, PB_ADMIN_PASSWORD);
             this.authenticated = true;
             logger.info('Authenticated with PocketBase');
