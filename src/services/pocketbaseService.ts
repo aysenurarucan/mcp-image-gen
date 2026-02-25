@@ -25,6 +25,10 @@ export class PocketBaseService {
     async authenticate() {
         if (this.authenticated) return;
 
+        if (!PB_EMAIL || !PB_PASSWORD) {
+            throw new Error("POCKETBASE creds missing: PB_EMAIL / PB_PASSWORD");
+        }
+
         try {
             console.log("PB AUTH START");
 

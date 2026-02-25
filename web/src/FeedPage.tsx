@@ -1,15 +1,10 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Heart, Eye, Clock, Layers, ChevronDown, Sparkles, Image as ImageIcon } from 'lucide-react';
-import { Capacitor } from '@capacitor/core';
 
-const HOST = Capacitor.isNativePlatform() ? '10.0.2.2' : 'localhost';
-const API_BASE = `http://${HOST}:8787/api`;
+const API_BASE = `${import.meta.env.VITE_API_URL}/api`;
 
 const getCorrectImageUrl = (url: string) => {
-    if (!url) return '';
-    if (Capacitor.isNativePlatform()) {
-        return url.replace('localhost', '10.0.2.2').replace('127.0.0.1', '10.0.2.2');
-    }
+    if (!url) return "";
     return url;
 };
 

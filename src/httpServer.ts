@@ -13,9 +13,12 @@ import { analyzePromptTool } from './tools/analyzePrompt.js';
 dotenv.config();
 
 const app = express();
-const port = process.env.API_PORT || 8787;
+const port = process.env.PORT || process.env.API_PORT || 8787;
 
-app.use(cors());
+app.use(cors({
+    origin: true,
+    credentials: true,
+}));
 app.use(express.json());
 
 // --- ROUTES ---

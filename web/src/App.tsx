@@ -6,17 +6,11 @@ import { Image as ImageIcon, Sparkles, Clock, Download, Command, X, Layers, Sett
 
 
 
-import { Capacitor } from "@capacitor/core";
-
-const HOST = Capacitor.isNativePlatform() ? "10.0.2.2" : "localhost";
-const API_BASE = `http://${HOST}:8787/api`;
+const API_BASE = `${import.meta.env.VITE_API_URL}/api`;
 
 const getCorrectImageUrl = (url: string) => {
   if (!url) return '';
-  if (Capacitor.isNativePlatform()) {
-    // Replace localhost or 127.0.0.1 with 10.0.2.2 for Android
-    return url.replace('localhost', '10.0.2.2').replace('127.0.0.1', '10.0.2.2');
-  }
+
   return url;
 };
 
