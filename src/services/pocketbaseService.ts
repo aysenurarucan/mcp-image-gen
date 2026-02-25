@@ -4,13 +4,14 @@ import dotenv from 'dotenv';
 import { CreatePromptInput } from '../schemas/prompts.js';
 
 
+
+
+
 dotenv.config();
 
-
 const PB_URL = process.env.POCKETBASE_URL || 'http://127.0.0.1:8090';
-const PB_ADMIN_EMAIL = process.env.PB_ADMIN_EMAIL || '';
-const PB_ADMIN_PASSWORD = process.env.PB_ADMIN_PASSWORD || '';
-
+const PB_EMAIL = process.env.PB_EMAIL || '';
+const PB_PASSWORD = process.env.PB_PASSWORD || '';
 
 export class PocketBaseService {
     private pb: PocketBase;
@@ -22,16 +23,18 @@ export class PocketBaseService {
     }
 
     async authenticate() {
-        logger.info("PB AUTH PATH CHECK: using admins.authWithPassword");
         if (this.authenticated) return;
+
         try {
-            logger.info("PB AUTH CALL: admins");
-            await this.pb.admins.authWithPassword(PB_ADMIN_EMAIL, PB_ADMIN_PASSWORD);
+            console.log("PB AUTH START");
+
+            await this.pb.admins.authWithPassword(PB_EMAIL, PB_PASSWORD);
+
             this.authenticated = true;
-            logger.info('Authenticated with PocketBase');
-        } catch (error) {
-            logger.error('Failed to authenticate with PocketBase', error);
-            throw error;
+            console.log("Authenticated with PocketBase");
+        } catch (err) {
+            console.error("PB AUTH ERROR:", err);
+            throw err;
         }
     }
 
