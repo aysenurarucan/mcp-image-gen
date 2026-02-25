@@ -28,7 +28,7 @@ export class PocketBaseService {
         try {
             console.log("PB AUTH START");
 
-            await this.pb.admins.authWithPassword(PB_EMAIL, PB_PASSWORD);
+            await this.pb.collection("_superusers").authWithPassword(PB_EMAIL, PB_PASSWORD);
 
             this.authenticated = true;
             console.log("Authenticated with PocketBase");
